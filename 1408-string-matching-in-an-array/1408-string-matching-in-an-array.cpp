@@ -2,16 +2,14 @@ class Solution {
 public:
     vector<string> stringMatching(vector<string>& words) {
         vector<string> res;
-            for(int i=0;i<words.size();i++)
+            for(auto st:words)
             {
-                    for(int j=0;j<words.size();j++)
+                    for(auto wo:words)
                     {
-                            if(i!=j)
+                            if(st.length()< wo.length() && wo.find(st)!=string::npos)
                             {
-                                   int fou=words[j].find(words[i]); // mistake : fou=words[i].find(words[j]);
-                                    if(fou!=string::npos){
-                                            res.push_back(words[i]); //mistake : res.push_back(words[j]);
-                                    break;}
+                                   res.push_back(st);
+                                    break;
                             }
                     }
             }
