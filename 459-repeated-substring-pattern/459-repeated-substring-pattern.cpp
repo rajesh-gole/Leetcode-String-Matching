@@ -1,34 +1,24 @@
 class Solution {
 public:
     bool repeatedSubstringPattern(string s) {
-        return (s + s).substr(1, 2*s.size()-2).find(s) != -1;
+        bool flag = true;
+        for(int i=1;i<=(int)(s.size()/2);++i){
+            if(s.size()%i == 0){
+                string prev = s.substr(0,i);
+                for(int j=i;j<=s.size()-i;j+=i){
+                    if(prev != s.substr(j,i)){
+                        flag = false;
+                        break;
+                    }  
+                }
+                if(flag) return true;
+                else flag = true;
+            }
+        }
+        return false;
     }
+        
 };
-/*
-Example 1.
-
-s = "abab"
-s+s = "abababab"
-
-On removing the first and the last characters, we get:
-(s+s).substr(1, 2*s.size()-2) = "bababa"
-
-This new string, "bababa" still contains the original string, "abab".
-Thus there exists some repeated pattern in the original string itself.
-
-
-Example 2.
-
-s = "aba"
-s+s = "abaaba"
-
-On removing the first and the last characters, we get:
-(s+s).substr(1, 2*s.size()-2) = "baab"
-
-This new string, "baab" does not contain the original string, "aba".
-This implies that there does not exist any pattern in the original string itself.
-
-*/
 
 
 
