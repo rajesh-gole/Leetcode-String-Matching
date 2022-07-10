@@ -29,6 +29,7 @@ public:
         int len = find_lps(s + "#" + rev);
         
         return rev.substr(0, rev.length()-len) + s;
+        //string s="abcdabc" and rev=cbadcba -> cbad + abcdabc -> cbadabcdabc
         
     }
 };
